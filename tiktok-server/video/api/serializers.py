@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from video.models import Video
+from video.models import Video, VideoLike
 from users.api.serializers import UserSerializer
 
 class VideoSerializer(ModelSerializer):
@@ -13,3 +13,10 @@ class VideoActionsSerializer(ModelSerializer):
     class Meta:
         model = Video
         fields = ['share_counter', 'likes_counter']
+
+
+class VideoLikeSerializer(ModelSerializer):
+    video_data = VideoSerializer(source='video', read_only=True)
+    class Meta:
+        model = VideoLike
+        fields = ['id', 'user', 'video', 'video_data', 'created_at']

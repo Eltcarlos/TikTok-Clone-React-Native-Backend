@@ -2,8 +2,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
-from video.models import Video
-from video.api.serializers import VideoSerializer, VideoActionsSerializer
+from video.models import Video, VideoLike
+from video.api.serializers import VideoSerializer, VideoActionsSerializer, VideoLikeSerializer
 
 class VideoApiViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
@@ -20,5 +20,14 @@ class VideoActionsApiViewSet(ModelViewSet):
     serializer_class = VideoActionsSerializer
     queryset = Video.objects.all()
     http_method_names = ['put']
+
+
+class VideoLikeApiViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = VideoLikeSerializer
+    queryset = Video.objects.all()
+    http_method_names = ['get', 'post', 'delete']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['user', 'video']
 
 
