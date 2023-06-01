@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_filters',
     'users',
-    'video'
+    'video',
+    'comment'
 ]
 
 MIDDLEWARE = [
