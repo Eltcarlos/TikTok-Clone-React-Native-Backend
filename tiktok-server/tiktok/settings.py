@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'cloudinary_storage',
     'rest_framework_simplejwt',
+    'django_filters',
     'users',
+    'video'
 ]
 
 MIDDLEWARE = [
@@ -121,11 +123,12 @@ USE_TZ = True
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=99999),
     'REFRESH_TOKEN_LIFETINE': datetime.timedelta(days=7),
 }
 
