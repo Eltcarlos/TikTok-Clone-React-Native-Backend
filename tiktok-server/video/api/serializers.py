@@ -17,6 +17,7 @@ class VideoActionsSerializer(ModelSerializer):
 
 class VideoLikeSerializer(ModelSerializer):
     video_data = VideoSerializer(source='video', read_only=True)
+
     class Meta:
         model = VideoLike
         fields = ['id', 'user', 'video', 'video_data', 'created_at']
