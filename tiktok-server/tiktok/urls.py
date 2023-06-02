@@ -25,6 +25,7 @@ from drf_yasg import openapi
 from video.api.router import router_video
 from comment.api.router import router_comment
 from users.api.router import router_user
+from follow.api.router import router_follow
 
 
 schema_view = get_schema_view(
@@ -43,6 +44,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/', include(router_user.urls)),
     path('api/', include('users.api.router')),
+    path('api/', include(router_follow.urls)),
+    path('api/', include('follow.api.router')),
     path('api/', include(router_video.urls)),
     path('api/', include(router_comment.urls)),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
