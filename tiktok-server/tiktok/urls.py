@@ -42,12 +42,13 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/', include(router_user.urls)),
+    path("api/", include(router_user.urls)),
     path('api/', include('users.api.router')),
-    path('api/', include(router_follow.urls)),
-    path('api/', include('follow.api.router')),
     path('api/', include(router_video.urls)),
+    path('api/', include('video.api.router')),
     path('api/', include(router_comment.urls)),
+    path("api/", include(router_follow.urls)),
+    path("api/", include("follow.api.router")),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
