@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'users',
     'video',
     'comment',
-    'follow'
+    'follow',
+    'notification'
 ]
 
 MIDDLEWARE = [
